@@ -1,17 +1,5 @@
 import itertools
 
-#prints all rows on new lines
-'''for row in game:
-	print(count, row)
-	count += 1
-'''
-
-#check if it is a list
-#print(type(game))
-
-#prints them on 1 line
-#print(game)
-
 def game_board(game_map, player=0, row=0, column=0):
 	try:
 		if game_map[row][column] != 0:
@@ -66,9 +54,9 @@ def win(current_board):
 	diags=[]
 	cols = reversed(range(len(game)))
 	rows = range(len(game))
+
 	for col, row in zip(cols, rows):
 		diags.append(game[row][col])
-#	print(diags)
 	if all_same(diags):
 		print(f"player {diags[0]} is the winner (/)")
 		return True
@@ -91,13 +79,14 @@ def endGame():
 play = True
 players=[1,2]
 y = itertools.cycle(players)
+
 while play:
 	game=[[0, 0, 0],
 		  [0, 0, 0],
 	  	  [0, 0, 0]]
-	print("here")
 	game_won = False
 	cnt=0
+
 	while not game_won:
 		current_player = next(y)
 		played=False
@@ -119,11 +108,6 @@ while play:
 			else:
 				print("not a valid answer")
 				play = False
+
 		if(cnt == 9):
 			game_won, play = endGame()
-'''	
-	if current_board[0][0] == current_board[1][1] == current_board[2][2]:
-		print("winner")
-	elif current_board[0][2] == current_board[1][1] == current_board[2][0]:
-		print("winner")
-'''
